@@ -1,0 +1,242 @@
+// =============================================================================
+// HOME.PAGE.SCSS - ESTILOS MODULARES CON SASS
+// =============================================================================
+// Actividad: Preprocesamiento de estilos con Sass en Ionic & Angular
+// Alumno: Daniel Daroca - Asignatura: Desarrollo de Interfaces (DI)
+// =============================================================================
+
+// 1. Importación modular moderna de variables y mixins con @use (Dart Sass)
+@use '../../theme/abstracts/variables' as v;
+@use '../../theme/abstracts/mixins' as m;
+
+// 2. Contenedor principal y estilos de página
+.page-container {
+  --background: #f7f9fc;
+  font-family: v.$font-family-base;
+
+  .content-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  // ===========================================================================
+  // REQUISITO 1: TÍTULO EN ROJO, MAYÚSCULAS Y CENTRADO
+  // ===========================================================================
+  .assignment-header {
+    text-align: v.$title-align;
+    margin-bottom: 0.5rem;
+
+    .assignment-title {
+      color: v.$title-color;                      // Color rojo (#d32f2f)
+      text-transform: v.$title-transform;          // Mayúsculas (uppercase)
+      text-align: v.$title-align;                  // Centrado (center)
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin: 0 0 0.5rem 0;
+      text-shadow: 0 2px 4px rgba(211, 47, 47, 0.15);
+
+      // Efecto interactivo sutil con selector padre de Sass (&)
+      transition: transform 0.2s ease;
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .subtitle {
+      color: v.$text-muted;
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  // ===========================================================================
+  // REQUISITO 2: BOTÓN A LA DERECHA EN AZUL
+  // ===========================================================================
+  .button-section {
+    @include m.flex-align-right;                   // Mixin Sass para alineación a la derecha
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .button-label {
+      font-size: 0.9rem;
+      color: v.$text-muted;
+      font-weight: 500;
+    }
+
+    .buttons-group {
+      display: inline-flex;
+      gap: 12px;
+      align-items: center;
+
+      // Botón con etiqueta HTML nativa estilizado 100% con Mixin Sass
+      .btn-sass-html {
+        @include m.styled-button(v.$button-bg, v.$button-bg-hover, v.$button-text-color);
+      }
+
+      // Botón con componente de Ionic (<ion-button>) estilizado mediante variables y Shadow DOM
+      .btn-sass-ionic {
+        --background: #{v.$button-bg};
+        --background-hover: #{v.$button-bg-hover};
+        --color: #{v.$button-text-color};
+        --border-radius: #{v.$button-radius};
+        font-weight: 600;
+        margin: 0;
+        box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  // Alerta de feedback al presionar botón
+  .feedback-alert {
+    background-color: #e3f2fd;
+    border-left: 4px solid v.$button-bg;
+    color: #0d47a1;
+    padding: 0.85rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  // ===========================================================================
+  // REQUISITO 3: IMAGEN CENTRADA CON BORDE EN VERDE DE GROSOR 3PX
+  // ===========================================================================
+  .image-section {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 14px;
+    box-shadow: v.$shadow-card;
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: v.$text-dark;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .image-center-container {
+      @include m.flex-center;                      // Mixin Sass para centrado perfecto
+
+      .framed-banner-img {
+        display: block;
+        margin: 0 auto;                            // Centrado de bloque estándar
+        max-width: 520px;
+        width: 100%;
+        height: auto;
+
+        // Borde verde de grosor 3px aplicado mediante mixin de Sass
+        @include m.framed-border(
+          $width: v.$img-border-width,             // 3px
+          $style: v.$img-border-style,             // solid
+          $color: v.$img-border-color,             // #2e7d32 (verde)
+          $radius: v.$img-border-radius            // 12px
+        );
+
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 10px 24px rgba(46, 125, 50, 0.3);
+        }
+      }
+    }
+
+    .image-caption {
+      text-align: center;
+      font-size: 0.88rem;
+      color: v.$text-muted;
+      margin-top: 0.9rem;
+      margin-bottom: 0;
+
+      code {
+        background-color: #e8f5e9;
+        color: v.$img-border-color;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: v.$font-family-mono;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // ===========================================================================
+  // SECCIÓN INFORMATIVA DE RESPUESTAS A LAS PREGUNTAS
+  // ===========================================================================
+  .qa-card {
+    border-radius: 14px;
+    box-shadow: v.$shadow-card;
+    margin: 0;
+    background: #ffffff;
+
+    ion-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: v.$text-dark;
+    }
+
+    ion-card-subtitle {
+      color: v.$button-bg;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .qa-item {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #edf2f7;
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      h4 {
+        color: #1a202c;
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem 0;
+      }
+
+      p {
+        color: #4a5568;
+        line-height: 1.6;
+        font-size: 0.92rem;
+        margin: 0;
+
+        code {
+          background-color: #f1f3f5;
+          color: #c2185b;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-family: v.$font-family-mono;
+          font-size: 0.86rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

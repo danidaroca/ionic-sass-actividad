@@ -1,0 +1,55 @@
+// =============================================================================
+// MIXINS SASS - PRÁCTICA SASS CON IONIC & ANGULAR
+// =============================================================================
+// Reutilización modular de patrones de maquetación Flexbox y bordes.
+// =============================================================================
+
+@use 'variables' as v;
+
+/// Centrado perfecto con Flexbox
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/// Alineación a la derecha (para el botón solicitado a la derecha)
+@mixin flex-align-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/// Marco decorativo con borde personalizado
+@mixin framed-border($width: v.$img-border-width, $style: v.$img-border-style, $color: v.$img-border-color, $radius: v.$img-border-radius) {
+  border: $width $style $color;
+  border-radius: $radius;
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.2);
+}
+
+/// Botón con transiciones y estilo moderno
+@mixin styled-button($bg: v.$button-bg, $hover-bg: v.$button-bg-hover, $text: v.$button-text-color) {
+  background-color: $bg;
+  color: $text;
+  border: none;
+  border-radius: v.$button-radius;
+  padding: v.$button-padding-y v.$button-padding-x;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    background-color: $hover-bg;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

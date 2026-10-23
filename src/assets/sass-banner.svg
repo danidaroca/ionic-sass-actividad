@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e24" />
+      <stop offset="100%" stop-color="#121217" />
+    </linearGradient>
+    <linearGradient id="sass-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff79b0" />
+      <stop offset="100%" stop-color="#cf467b" />
+    </linearGradient>
+    <linearGradient id="ionic-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3880ff" />
+      <stop offset="100%" stop-color="#1b56c4" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background Card -->
+  <rect width="600" height="340" rx="16" fill="url(#bg-grad)" />
+
+  <!-- Subtle grid pattern lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="60" x2="600" y2="60" />
+    <line x1="0" y1="120" x2="600" y2="120" />
+    <line x1="0" y1="180" x2="600" y2="180" />
+    <line x1="0" y1="240" x2="600" y2="240" />
+    <line x1="0" y1="300" x2="600" y2="300" />
+    <line x1="100" y1="0" x2="100" y2="340" />
+    <line x1="200" y1="0" x2="200" y2="340" />
+    <line x1="300" y1="0" x2="300" y2="340" />
+    <line x1="400" y1="0" x2="400" y2="340" />
+    <line x1="500" y1="0" x2="500" y2="340" />
+  </g>
+
+  <!-- Sass Central Badge -->
+  <g transform="translate(180, 50)" filter="url(#shadow)">
+    <rect width="240" height="120" rx="12" fill="#252530" stroke="#cf467b" stroke-width="2" />
+    <!-- Sass Monogram / Title -->
+    <text x="120" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="44" font-weight="900" fill="url(#sass-grad)" text-anchor="middle" letter-spacing="2">Sass</text>
+    <text x="120" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#a0a0b0" text-anchor="middle" letter-spacing="3">CSS PREPROCESSOR</text>
+  </g>
+
+  <!-- Decorative Pills / Tags -->
+  <g transform="translate(70, 200)">
+    <rect width="130" height="38" rx="8" fill="#1b2a47" stroke="#3880ff" stroke-width="1.5" />
+    <text x="65" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#6ba4ff" text-anchor="middle">⚡ Ionic 8+</text>
+  </g>
+
+  <g transform="translate(235, 200)">
+    <rect width="130" height="38" rx="8" fill="#301f2e" stroke="#cf467b" stroke-width="1.5" />
+    <text x="65" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#ff79b0" text-anchor="middle">🎨 SCSS Syntax</text>
+  </g>
+
+  <g transform="translate(400, 200)">
+    <rect width="130" height="38" rx="8" fill="#1d3027" stroke="#2e7d32" stroke-width="1.5" />
+    <text x="65" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#4caf50" text-anchor="middle">✓ Auto-Compile</text>
+  </g>
+
+  <!-- Code Snippet Bottom Bar -->
+  <g transform="translate(60, 260)">
+    <rect width="480" height="50" rx="8" fill="#18181f" stroke="#333340" stroke-width="1" />
+    <circle cx="24" cy="25" r="5" fill="#e53935" />
+    <circle cx="40" cy="25" r="5" fill="#fbc02d" />
+    <circle cx="56" cy="25" r="5" fill="#2e7d32" />
+    <text x="75" y="30" font-family="'Cascadia Code', 'Fira Code', 'Courier New', monospace" font-size="13" fill="#cf467b">$border-color: #2e7d32; <tspan fill="#3880ff">$border-width: 3px;</tspan></text>
+  </g>
+</svg>

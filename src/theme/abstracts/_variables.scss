@@ -1,0 +1,34 @@
+// =============================================================================
+// VARIABLES SASS - PRÁCTICA SASS CON IONIC & ANGULAR
+// =============================================================================
+// Define tokens de diseño, colores y parámetros reutilizables según los requisitos:
+// 1. Título en rojo
+// 2. Botón en azul
+// 3. Imagen con borde en verde de grosor 3px
+// =============================================================================
+
+// Requisitos de la Actividad
+$title-color: #d32f2f;              // Rojo para el título principal
+$title-transform: uppercase;        // Mayúsculas
+$title-align: center;               // Centrado
+
+$button-bg: #1976d2;                // Azul para el botón a la derecha
+$button-bg-hover: #1565c0;          // Azul más oscuro para interacción hover
+$button-text-color: #ffffff;        // Texto blanco
+$button-radius: 8px;                // Borde redondeado sutil
+$button-padding-y: 12px;
+$button-padding-x: 24px;
+
+$img-border-width: 3px;             // Grosor exacto de 3px solicitado
+$img-border-style: solid;
+$img-border-color: #2e7d32;         // Verde para el borde de la imagen
+$img-border-radius: 12px;           // Acabado redondeado elegante
+
+// Paleta base y estructura
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+$font-family-mono: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+$surface-light: #ffffff;
+$surface-alt: #f4f6f8;
+$text-dark: #212529;
+$text-muted: #5f6368;
+$shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);

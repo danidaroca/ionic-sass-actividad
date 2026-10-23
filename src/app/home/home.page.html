@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Actividad Sass en Ionic & Angular</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding page-container">
+  <div class="content-wrapper">
+
+    <!-- SECCIÓN REQUISITO 1: TÍTULO EN ROJO, MAYÚSCULAS Y CENTRADO -->
+    <header class="assignment-header">
+      <h1 class="assignment-title">DISEÑO Y ESTILOS CON SASS</h1>
+      <p class="subtitle">Práctica de Desarrollo de Interfaces (DI) - DAM2</p>
+    </header>
+
+    <!-- SECCIÓN REQUISITO 2: BOTÓN A LA DERECHA EN AZUL -->
+    <div class="button-section">
+      <span class="button-label">Alineación a la derecha:</span>
+      <!-- Botón implementado tanto con etiquetas HTML estándar como con componente Ionic -->
+      <div class="buttons-group">
+        <button class="btn-sass-html" (click)="onButtonClick('Botón HTML estándar')">
+          Botón HTML (Azul)
+        </button>
+        <ion-button class="btn-sass-ionic" (click)="onButtonClick('Componente Ionic')">
+          Botón Ionic (Azul)
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Feedback interactivo al pulsar el botón -->
+    @if (buttonClickMessage) {
+      <div class="feedback-alert">
+        {{ buttonClickMessage }}
+      </div>
+    }
+
+    <!-- SECCIÓN REQUISITO 3: IMAGEN CENTRADA CON BORDE VERDE DE GROSOR 3PX -->
+    <section class="image-section">
+      <h3 class="section-title">Imagen con Borde Verde (3px)</h3>
+      <div class="image-center-container">
+        <img
+          src="assets/sass-banner.svg"
+          alt="Banner explicativo Sass con arquitectura modular"
+          class="framed-banner-img"
+        />
+      </div>
+      <p class="image-caption">
+        Borde aplicado mediante mixin Sass: <code>3px solid #2e7d32</code>
+      </p>
+    </section>
+
+    <!-- SECCIÓN DIDÁCTICA: PREGUNTAS TÉCNICAS PLANTEADAS -->
+    <ion-card class="qa-card">
+      <ion-card-header>
+        <ion-card-subtitle>Cuestiones teóricas de la práctica</ion-card-subtitle>
+        <ion-card-title>Respuestas a las Preguntas Planteadas</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="qa-item">
+          <h4>1. ¿El componente usa Sass por defecto?</h4>
+          <p>
+            <strong>Sí.</strong> En Ionic con Angular, la configuración del proyecto en <code>angular.json</code>
+            establece que los generadores de páginas y componentes utilicen la extensión <code>.scss</code>
+            (<code>"styleext": "scss"</code> y <code>"inlineStyleLanguage": "scss"</code>). Al crear el proyecto
+            con la plantilla <em>blank</em>, el componente <code>HomePage</code> ya viene vinculado a
+            <code>home.page.scss</code>.
+          </p>
+        </div>
+
+        <div class="qa-item">
+          <h4>2. ¿Aplico Sass pero se compila solo? ¿Por qué no hacemos <code>npm run watch:sass</code>?</h4>
+          <p>
+            <strong>Sí, se compila de forma 100% automática y en memoria.</strong> A diferencia de proyectos web planos
+            (como <em>m9-3-sass-fundamentals</em>) donde se requiere un watcher manual de Node (<code>sass --watch</code>),
+            al ejecutar <code>ionic serve</code> se delega en el builder moderno de Angular CLI (<code>@angular/build:application</code>
+            con Vite/esbuild). Este pipeline integra el compilador de Sass de forma nativa, recompilando al instante
+            y aplicando Hot Module Replacement (HMR) cada vez que guardas un cambio.
+          </p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

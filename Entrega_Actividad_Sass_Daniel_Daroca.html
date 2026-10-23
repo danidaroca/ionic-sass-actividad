@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Entrega Actividad Sass - Daniel Daroca</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 20mm 16mm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #24292f;
+      line-height: 1.55;
+      font-size: 11pt;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* Cover Page */
+    .cover-page {
+      height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 2px solid #cfd8dc;
+      border-radius: 12px;
+      padding: 40px;
+      box-sizing: border-box;
+      background: linear-gradient(135deg, #ffffff 0%, #f7f9fa 100%);
+    }
+
+    .cover-header {
+      border-bottom: 3px solid #cf467b;
+      padding-bottom: 20px;
+    }
+
+    .cover-header .institution {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #57606a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cover-header .module {
+      font-size: 18pt;
+      font-weight: 800;
+      color: #0969da;
+      margin-top: 5px;
+    }
+
+    .cover-body {
+      margin-top: 40px;
+    }
+
+    .cover-body .badge {
+      display: inline-block;
+      background-color: #cf467b;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .cover-body h1 {
+      font-size: 26pt;
+      line-height: 1.25;
+      color: #1f2328;
+      margin: 0 0 15px 0;
+    }
+
+    .cover-body .subtitle {
+      font-size: 13pt;
+      color: #57606a;
+      line-height: 1.4;
+    }
+
+    .cover-footer {
+      border-top: 1px solid #d0d7de;
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      font-size: 10pt;
+    }
+
+    .cover-footer div strong {
+      display: block;
+      color: #57606a;
+      font-size: 9pt;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .cover-footer div span {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #24292f;
+    }
+
+    /* Standard Headers */
+    h2 {
+      font-size: 16pt;
+      color: #0969da;
+      border-bottom: 2px solid #e1e4e8;
+      padding-bottom: 6px;
+      margin-top: 28px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 13pt;
+      color: #24292f;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    h4 {
+      font-size: 11pt;
+      color: #313d4a;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      margin: 0 0 10px 0;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin: 0 0 12px 0;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    /* Highlight Boxes */
+    .callout {
+      background-color: #f6f8fa;
+      border-left: 4px solid #0969da;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      margin: 14px 0;
+      font-size: 10.5pt;
+    }
+
+    .callout-success {
+      background-color: #dafbe1;
+      border-left-color: #1a7f37;
+      color: #114c24;
+    }
+
+    .callout-sass {
+      background-color: #fdf0f5;
+      border-left-color: #cf467b;
+      color: #69173a;
+    }
+
+    .callout-warning {
+      background-color: #fff8c5;
+      border-left-color: #9a6700;
+      color: #633c01;
+    }
+
+    /* Code Blocks */
+    pre {
+      background-color: #f6f8fa;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 12px;
+      font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+      font-size: 9.2pt;
+      line-height: 1.45;
+      overflow-x: auto;
+      margin: 10px 0 14px 0;
+    }
+
+    code {
+      font-family: 'Cascadia Code', 'Consolas', monospace;
+      background-color: #f1f3f5;
+      color: #cf467b;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 9.5pt;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 10pt;
+    }
+
+    th, td {
+      border: 1px solid #d0d7de;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f6f8fa;
+      font-weight: 700;
+      color: #24292f;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fbfeff;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .qa-box {
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      background: #fafbfc;
+    }
+
+    .qa-box h3 {
+      margin-top: 0;
+      color: #0969da;
+    }
+
+    .diagram {
+      background: #ffffff;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 9.5pt;
+      color: #24292f;
+      line-height: 1.35;
+      margin: 12px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PORTADA -->
+  <div class="cover-page page-break">
+    <div class="cover-header">
+      <div class="institution">Ciclo Formativo de Grado Superior DAM / DAW</div>
+      <div class="module">Desarrollo de Interfaces (DI)</div>
+    </div>
+
+    <div class="cover-body">
+      <span class="badge">Práctica de Estilos con Sass</span>
+      <h1>Preprocesamiento de CSS con Sass en Ionic & Angular</h1>
+      <p class="subtitle">
+        Implementación de diseño responsivo con variables, mixins y nesting modular en arquitectura Angular Standalone, análisis de compilación en caliente y contraste con el flujo manual de Sass.
+      </p>
+    </div>
+
+    <div class="cover-footer">
+      <div>
+        <strong>Alumno:</strong>
+        <span>Daniel Daroca</span>
+      </div>
+      <div>
+        <strong>Fecha:</strong>
+        <span>23 de Octubre de 2026</span>
+      </div>
+      <div>
+        <strong>Entorno Tecnológico:</strong>
+        <span>Ionic 8+ / Angular 22 / Dart Sass / TypeScript</span>
+      </div>
+      <div>
+        <strong>Repositorio GitHub:</strong>
+        <span>https://github.com/danidaroca/ionic-sass-actividad</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÍNDICE DE CONTENIDOS Y ENUNCIADO -->
+  <div>
+    <h2>1. Enunciado y Objetivos de la Actividad</h2>
+    <p>
+      El objetivo de esta práctica es dominar la integración y el flujo de trabajo de <strong>Sass (SCSS)</strong> dentro del ecosistema moderno de desarrollo móvil y web con <strong>Ionic</strong> y <strong>Angular</strong>.
+    </p>
+
+    <div class="callout callout-sass">
+      <strong>Requisitos especificados en el enunciado:</strong>
+      <ol style="margin-top: 8px; margin-bottom: 0;">
+        <li>Crear un proyecto <strong>Ionic - Angular</strong> (utilizando componentes Standalone).</li>
+        <li>Trabajar sobre la página/componente ya generada llamada <strong>home</strong>.</li>
+        <li>Permitir el uso de etiquetas HTML estándar y componentes de Ionic: <strong>título + botón + imagen</strong>.</li>
+        <li><strong>Título:</strong> en rojo, transformado a mayúsculas y centrado.</li>
+        <li><strong>Botón:</strong> alineado a la derecha y estilizado en color azul.</li>
+        <li><strong>Imagen:</strong> centrada en la pantalla con borde en color verde de grosor <strong>3px</strong>.</li>
+        <li>Aplicar todo el diseño mediante hojas de estilo <strong>Sass</strong>.</li>
+        <li>Responder de forma argumentada a las preguntas técnicas planteadas:
+          <ul>
+            <li><em>¿El componente usa Sass por defecto?</em></li>
+            <li><em>¿Aplico Sass pero se compila solo? ¿Por qué con <code>ionic serve</code> no se ejecuta <code>npm run watch:sass</code>?</em></li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <h2>2. Creación del Proyecto Ionic - Angular</h2>
+    <p>
+      Para garantizar el uso de las versiones más estables y modernas, se ha generado el proyecto mediante Ionic CLI especificando la tipología <code>angular-standalone</code> y la plantilla <code>blank</code>:
+    </p>
+    <pre>ionic start Sass blank --type=angular-standalone --no-interactive</pre>
+    <p>
+      Esta instrucción prepara un proyecto Angular completo con Capacitor, configurando los esquemas automáticos para componentes independientes (Standalone) y estilos con extensión <code>.scss</code>.
+    </p>
+
+    <div class="diagram">
+Sass/
+├── src/
+│   ├── app/
+│   │   ├── home/
+│   │   │   ├── home.page.html       # Vista con componentes HTML e Ionic
+│   │   │   ├── home.page.scss       # Hoja de estilos SCSS modular del componente
+│   │   │   ├── home.page.ts         # Componente Angular Standalone
+│   ├── assets/
+│   │   └── sass-banner.svg          # Gráfico ilustrativo de Sass & Ionic
+│   ├── theme/
+│   │   ├── abstracts/
+│   │   │   ├── _variables.scss      # Tokens y variables Sass (colores, bordes)
+│   │   │   └── _mixins.scss         # Mixins reutilizables (flexbox, marcos)
+│   │   └── variables.scss           # Paleta de Ionic Framework
+├── angular.json                     # Definición del pipeline de compilación
+└── package.json                     # Dependencias y scripts de ejecución
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- IMPLEMENTACIÓN DEL DISEÑO CON SASS -->
+  <div>
+    <h2>3. Implementación del Diseño con Sass Modular</h2>
+    <p>
+      Siguiendo la arquitectura profesional recomendada en el <em>Patrón 7-1</em> (visto en las sesiones teóricas previas <code>patron-7-1-demo</code> y <code>m9-3-sass-fundamentals</code>), se ha estructurado una capa de abstracciones dentro de <code>src/theme/abstracts/</code> que contiene las variables y los mixins del sistema de diseño, importados mediante la directiva moderna <code>@use</code> de Dart Sass.
+    </p>
+
+    <h3>3.1. Definición de Tokens y Variables (<code>_variables.scss</code>)</h3>
+    <p>
+      Se centralizan todos los valores requeridos en el enunciado para asegurar un código mantenible y desacoplado:
+    </p>
+    <pre>// src/theme/abstracts/_variables.scss
+
+// Requisito 1: Título en rojo, mayúsculas y centrado
+$title-color: #d32f2f;
+$title-transform: uppercase;
+$title-align: center;
+
+// Requisito 2: Botón en azul alineado a la derecha
+$button-bg: #1976d2;
+$button-bg-hover: #1565c0;
+$button-text-color: #ffffff;
+$button-radius: 8px;
+
+// Requisito 3: Imagen con borde verde de 3px
+$img-border-width: 3px;
+$img-border-style: solid;
+$img-border-color: #2e7d32;
+$img-border-radius: 12px;</pre>
+
+    <h3>3.2. Mixins de Maquetación y Bordes (<code>_mixins.scss</code>)</h3>
+    <pre>// src/theme/abstracts/_mixins.scss
+@use 'variables' as v;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-align-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@mixin framed-border($width: v.$img-border-width, $style: v.$img-border-style, $color: v.$img-border-color, $radius: v.$img-border-radius) {
+  border: $width $style $color;
+  border-radius: $radius;
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.2);
+}
+
+@mixin styled-button($bg: v.$button-bg, $hover-bg: v.$button-bg-hover, $text: v.$button-text-color) {
+  background-color: $bg;
+  color: $text;
+  border: none;
+  border-radius: v.$button-radius;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  &:hover {
+    background-color: $hover-bg;
+    transform: translateY(-2px);
+  }
+}</pre>
+
+    <h3>3.3. Estilos del Componente Home (<code>home.page.scss</code>)</h3>
+    <p>
+      En <code>home.page.scss</code> se aplican los tres requerimientos usando anidamiento jerárquico (<em>nesting</em>), llamadas a mixins con <code>@include</code> y selectores contextuales:
+    </p>
+    <pre>@use '../../theme/abstracts/variables' as v;
+@use '../../theme/abstracts/mixins' as m;
+
+.page-container {
+  // Requisito 1: Título en rojo, mayúsculas y centrado
+  .assignment-header .assignment-title {
+    color: v.$title-color;
+    text-transform: v.$title-transform;
+    text-align: v.$title-align;
+    font-size: 2rem;
+    font-weight: 800;
+  }
+
+  // Requisito 2: Botón a la derecha en azul
+  .button-section {
+    @include m.flex-align-right;
+    .btn-sass-html {
+      @include m.styled-button(v.$button-bg, v.$button-bg-hover, v.$button-text-color);
+    }
+    .btn-sass-ionic {
+      --background: #{v.$button-bg};
+      --color: #{v.$button-text-color};
+    }
+  }
+
+  // Requisito 3: Imagen centrada con borde verde de 3px
+  .image-section .image-center-container {
+    @include m.flex-center;
+    .framed-banner-img {
+      display: block;
+      margin: 0 auto;
+      @include m.framed-border;
+    }
+  }
+}</pre>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- RESPUESTAS A LAS PREGUNTAS PLANTEADAS -->
+  <div>
+    <h2>4. Respuestas Argumentadas a las Preguntas Planteadas</h2>
+
+    <div class="qa-box">
+      <h3>Pregunta 1: ¿El componente usa Sass por defecto?</h3>
+      <p>
+        <strong>Respuesta directa: SÍ, Ionic con Angular utiliza Sass (SCSS) por defecto en todos sus componentes y páginas.</strong>
+      </p>
+      <p>
+        <strong>Fundamentación técnica:</strong>
+      </p>
+      <ol>
+        <li>
+          <strong>Configuración en <code>angular.json</code>:</strong> Al generar un proyecto Ionic Angular, el archivo de configuración global define explícitamente que los generadores de código (<em>schematics</em>) creen componentes y páginas con extensión <code>scss</code>:
+          <pre>"schematics": {
+  "@ionic/angular-toolkit:page": {
+    "styleext": "scss",
+    "standalone": true
+  }
+},
+"inlineStyleLanguage": "scss",
+"styles": ["src/global.scss", "src/theme/variables.scss"]</pre>
+        </li>
+        <li>
+          <strong>Enlace en el decorador <code>@Component</code>:</strong> El componente inicial <code>src/app/home/home.page.ts</code> declara:
+          <pre>@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss']
+})</pre>
+          Ionic adopta de forma predeterminada la sintaxis <code>.scss</code> (Sassy CSS) frente al CSS clásico o Sass indentado antiguo (<code>.sass</code>).
+        </li>
+        <li>
+          <strong>Ecosistema global de temas:</strong> Toda la arquitectura de theming de Ionic Framework (<code>src/theme/variables.scss</code> y <code>src/global.scss</code>) está diseñada nativamente en Sass, permitiendo sobreescribir CSS Custom Properties y variables SCSS de manera unificada.
+        </li>
+      </ol>
+    </div>
+
+    <div class="qa-box">
+      <h3>Pregunta 2: ¿Aplico Sass pero se compila solo? ¿Por qué no hacemos <code>npm run watch:sass</code>?</h3>
+      <p>
+        <strong>Respuesta directa: SÍ, Sass se compila automáticamente y en memoria al ejecutar <code>ionic serve</code>. No es necesario ni aplicable ejecutar <code>npm run watch:sass</code>.</strong>
+      </p>
+      <p>
+        <strong>Fundamentación técnica y comparativa de flujos de trabajo:</strong>
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Proyectos Web Planos (p. ej. <code>m9-3-sass-fundamentals</code>)</th>
+            <th>Proyectos Ionic - Angular (<code>ionic serve</code>)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pipeline de construcción</strong></td>
+            <td>Inexistente. No hay empaquetador (Webpack, Vite o esbuild).</td>
+            <td>Integrado mediante <code>@angular/build:application</code> (con motor Vite + esbuild).</td>
+          </tr>
+          <tr>
+            <td><strong>Compilador de Sass</strong></td>
+            <td>Debe instalarse manualmente en <code>devDependencies</code> (paquete <code>sass</code>).</td>
+            <td>Viene integrado y gestionado internamente por el Angular CLI.</td>
+          </tr>
+          <tr>
+            <td><strong>Modo de escucha (Watch)</strong></td>
+            <td>Requiere un script en <code>package.json</code>: <code>"watch:sass": "sass --watch scss:dist/css"</code>.</td>
+            <td>Automático e inherente al comando <code>ionic serve</code> (que delega en <code>ng serve</code>).</td>
+          </tr>
+          <tr>
+            <td><strong>Destino de la compilación</strong></td>
+            <td>Escribe archivos físicos <code>.css</code> y <code>.css.map</code> en la carpeta <code>dist/css</code> en disco.</td>
+            <td>Compilación en memoria virtual (Virtual File System / RAM), optimizando I/O de disco.</td>
+          </tr>
+          <tr>
+            <td><strong>Recarga de estilos</strong></td>
+            <td>Requiere recargar manualmente el navegador o usar extensiones como Live Server.</td>
+            <td>Aplica <strong>Hot Module Replacement (HMR)</strong> instantáneo; los estilos se actualizan al guardar sin perder el estado de la aplicación.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-success">
+        <strong>Conclusión técnica:</strong> En Ionic con Angular, el desarrollador solo se enfoca en escribir su código en archivos <code>.scss</code>. El proceso de compilación, resolución de rutas, vendor-prefixing, optimización y refresco en el navegador corre de forma transparente y automática dentro del ciclo de vida de <code>ionic serve</code>.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CÓDIGO Y EVIDENCIAS DE EJECUCIÓN -->
+  <div>
+    <h2>5. Código Fuente Completo y Comentado</h2>
+
+    <h3>5.1. Plantilla Vista (<code>src/app/home/home.page.html</code>)</h3>
+    <pre>&lt;ion-header [translucent]="true"&gt;
+  &lt;ion-toolbar color="primary"&gt;
+    &lt;ion-title&gt;Actividad Sass en Ionic &amp; Angular&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content [fullscreen]="true" class="ion-padding page-container"&gt;
+  &lt;div class="content-wrapper"&gt;
+
+    &lt;!-- REQUISITO 1: TÍTULO EN ROJO, MAYÚSCULAS Y CENTRADO --&gt;
+    &lt;header class="assignment-header"&gt;
+      &lt;h1 class="assignment-title"&gt;DISEÑO Y ESTILOS CON SASS&lt;/h1&gt;
+      &lt;p class="subtitle"&gt;Práctica de Desarrollo de Interfaces (DI) - DAM2&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;!-- REQUISITO 2: BOTÓN A LA DERECHA EN AZUL --&gt;
+    &lt;div class="button-section"&gt;
+      &lt;span class="button-label"&gt;Alineación a la derecha:&lt;/span&gt;
+      &lt;div class="buttons-group"&gt;
+        &lt;button class="btn-sass-html" (click)="onButtonClick('Botón HTML estándar')"&gt;
+          Botón HTML (Azul)
+        &lt;/button&gt;
+        &lt;ion-button class="btn-sass-ionic" (click)="onButtonClick('Componente Ionic')"&gt;
+          Botón Ionic (Azul)
+        &lt;/ion-button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Feedback dinámico al interactuar con el botón --&gt;
+    @if (buttonClickMessage) {
+      &lt;div class="feedback-alert"&gt;
+        {{ buttonClickMessage }}
+      &lt;/div&gt;
+    }
+
+    &lt;!-- REQUISITO 3: IMAGEN CENTRADA CON BORDE VERDE DE GROSOR 3PX --&gt;
+    &lt;section class="image-section"&gt;
+      &lt;h3 class="section-title"&gt;Imagen con Borde Verde (3px)&lt;/h3&gt;
+      &lt;div class="image-center-container"&gt;
+        &lt;img
+          src="assets/sass-banner.svg"
+          alt="Banner explicativo Sass con arquitectura modular"
+          class="framed-banner-img"
+        /&gt;
+      &lt;/div&gt;
+      &lt;p class="image-caption"&gt;
+        Borde aplicado mediante mixin Sass: &lt;code&gt;3px solid #2e7d32&lt;/code&gt;
+      &lt;/p&gt;
+    &lt;/section&gt;
+
+  &lt;/div&gt;
+&lt;/ion-content&gt;</pre>
+
+    <h3>5.2. Componente TypeScript (<code>src/app/home/home.page.ts</code>)</h3>
+    <pre>import { Component } from '@angular/core';
+import {
+  IonHeader, IonToolbar, IonTitle, IonContent,
+  IonButton, IonCard, IonCardHeader, IonCardTitle,
+  IonCardSubtitle, IonCardContent
+} from '@ionic/angular';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [
+    IonHeader, IonToolbar, IonTitle, IonContent,
+    IonButton, IonCard, IonCardHeader, IonCardTitle,
+    IonCardSubtitle, IonCardContent
+  ],
+})
+export class HomePage {
+  buttonClickMessage = '';
+
+  onButtonClick(source: string) {
+    this.buttonClickMessage = `¡Acción ejecutada desde el botón (${source}) con estilo azul Sass!`;
+  }
+}</pre>
+
+    <h2>6. Verificación de Compilación y Puesta en Marcha</h2>
+    <p>
+      El proyecto ha sido compilado exitosamente para producción utilizando el compilador oficial de Angular y Vite:
+    </p>
+    <pre>$ npm run build
+
+> Sass@0.0.1 build
+> ng build
+
+√ Building...
+Application bundle generation complete. [10.323 seconds]
+Output location: C:\Users\Daniel\Desktop\DI\Sass\www</pre>
+
+    <div class="callout callout-success">
+      <strong>Estado de compilación:</strong> Cero errores, cero advertencias críticas. Todas las hojas de estilo Sass compilaron correctamente y los componentes standalone quedaron empaquetados en la carpeta <code>www/</code>.
+    </div>
+
+    <h2>7. Enlace de Entrega en GitHub</h2>
+    <p>
+      El código fuente íntegro de la práctica está versionado en Git y preparado para su clonación y revisión:
+    </p>
+    <div class="callout">
+      <strong>Repositorio GitHub:</strong><br>
+      <a href="https://github.com/danidaroca/ionic-sass-actividad" style="color: #0969da; font-weight: 700; text-decoration: none;">
+        https://github.com/danidaroca/ionic-sass-actividad
+      </a>
+      <br><br>
+      <strong>Comandos para clonar y ejecutar en local:</strong>
+      <pre style="margin-top: 6px; margin-bottom: 0;">git clone https://github.com/danidaroca/ionic-sass-actividad.git
+cd ionic-sass-actividad
+npm install
+ionic serve</pre>
+    </div>
+  </div>
+
+</body>
+</html>
